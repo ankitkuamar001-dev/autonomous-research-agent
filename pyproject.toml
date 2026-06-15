@@ -1,0 +1,78 @@
+[project]
+name = "autonomous-research-agent"
+version = "1.0.0"
+description = "Production-grade Autonomous Research Agent with LangGraph, FastAPI, and ChromaDB"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Ankit" }]
+
+dependencies = [
+    # LLM & Agent Framework
+    "langchain>=0.3.0",
+    "langchain-core>=0.3.0",
+    "langchain-google-genai>=2.1.0",
+    "langchain-groq>=0.3.0",
+    "langchain-community>=0.3.0",
+    "langgraph>=0.4.0",
+
+    # Data Models
+    "pydantic>=2.10.0",
+    "pydantic-settings>=2.7.0",
+
+    # Web Framework
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.34.0",
+
+    # Search
+    "tavily-python>=0.5.0",
+
+    # Web Scraping
+    "httpx>=0.28.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=5.3.0",
+
+    # PDF
+    "PyMuPDF>=1.25.0",
+
+    # Vector Store
+    "chromadb>=0.6.0",
+    "sentence-transformers>=3.4.0",
+
+    # Report Generation
+    "markdown2>=2.5.0",
+    "weasyprint>=63.0",
+
+    # Utilities
+    "python-dotenv>=1.0.0",
+    "aiosqlite>=0.20.0",
+    "tenacity>=9.0.0",
+    "structlog>=24.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+    "pytest-httpx>=0.35.0",
+    "httpx>=0.28.0",
+    "mypy>=1.14.0",
+    "ruff>=0.9.0",
+]
+frontend = [
+    "streamlit>=1.41.0",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP", "B", "A", "SIM"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
